@@ -22,8 +22,29 @@ public class RPNcalculator implements Calculator {
         return true;
     }
 
-    public double execute(List<String> expression){
-        
+    public double execute(List<String> statement){
+        double value = Double.valueOf(statement.get(0));
+        statement.remove(0);
+
+        while (!statement.isEmpty()){
+            if (Parser.isNumber(statement.get(0))){
+                double number = Double.valueOf(statement.remove(0));
+                String operator = statement.remove(0);
+                for (Operation op : this.operationsArrayList) {
+                    if (op.getOperator().equals(operator)) {
+                        value = op.execute(value, number);
+                    }
+                }
+            }else{
+                String operator = statement.remove(0);
+                for (Operation op : this.operationsArrayList) {
+                    if (op.getOperator().equals(operator)) {
+                        value = op.execute(value);
+                    }
+                }
+            }
+        }
+        return value;
     }
 
     public List<String> getOperationsInfo() {

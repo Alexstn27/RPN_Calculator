@@ -17,8 +17,8 @@ public class Addition implements Operation {
     }
 
     @Override
-    public double execute(double val1, double val) {
-        return val1+val;
+    public double execute(double val1, double val2) {
+        return val1+val2;
     }
 
     @Override

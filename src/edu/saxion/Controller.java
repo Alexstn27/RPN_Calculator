@@ -1,13 +1,13 @@
 package edu.saxion;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
 
-    private Calculator calculator;
-    private Vision vision;
-    private Parser parser;
-    private Input input;
+    private final Calculator calculator;
+    private final Vision vision;
+    private final Parser parser;
+    private final Input input;
 
     public Controller(Calculator calculator, Vision vision, Parser parser, Input input) {
         this.calculator = calculator;
@@ -26,7 +26,7 @@ public class Controller {
                 return;
             if (parser.canParse(takeInput))
             {
-                ArrayList<String> parsed = parser.parse(takeInput);
+                List<String> parsed = parser.parse(takeInput);
                 double result = calculator.execute(parsed);
                 vision.printResult(result);
             }

@@ -4,14 +4,14 @@ import java.util.List;
 
 public class Vision {
     public void leads(List<String> operation){
-        String message="Welcome to your RPN calculator !"+
-                "Please enter one or two numbers."+
-                "\nIf you want to close the program press q"+
-                "\nYour possible operations : ";
+        StringBuilder message= new StringBuilder("Welcome to your RPN calculator !" +
+                "Please enter one or two numbers." +
+                "\nIf you want to close the program press q" +
+                "\nYour possible operations : ");
         for (var possibleOperations : operation)
         {
-            message += "\n";
-            message += possibleOperations;
+            message.append("\n");
+            message.append(possibleOperations);
         }
         System.out.println(message);
     }

@@ -21,7 +21,6 @@ public class Subtraction implements Operation {
     public double execute(double val1, double val2) {
         return val1-val2;
     }
-
     @Override
     public double execute(double val) {
         throw new RuntimeException("Something went wrong. Try again!");

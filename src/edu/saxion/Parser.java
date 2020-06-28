@@ -3,8 +3,9 @@ package edu.saxion;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Parser {
-    List<String> suppOperators;
+    final List<String> suppOperators;
 
     public Parser(List<String> suppOperators){
         this.suppOperators=suppOperators;
@@ -30,8 +31,10 @@ public class Parser {
     public boolean canParse(String equation)
     {
         String[] stringArray = equation.split("\\s+");
-        if (stringArray.length != 2 && stringArray.length != 3)
+        if ((stringArray.length != 2 && stringArray.length != 3) )
             return false;
+//        if ( equation.length()==7)
+//            return false;
         for (var i = 0; i < stringArray.length; i++)
         {
             if (i == stringArray.length - 1)
@@ -49,20 +52,16 @@ public class Parser {
 
     private boolean isInteger(String splited){
         String replaced= splited.replaceAll("\\D","");
-        if(replaced.equals(""))
-            return false;
-        else return true;
+        return !replaced.equals("");
     }
 
     private boolean isSupportedOperators(String splited){
-        if (!suppOperators.contains(splited))
-            return false;
-        else return true;
+        return suppOperators.contains(splited);
     }
 
     public static boolean isNumber(String token){
         try{
-            double dummy = Double.valueOf(token);
+            double number = Double.parseDouble(token);
         }catch(NumberFormatException ex){
             return false;
         }
